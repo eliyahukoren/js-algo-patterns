@@ -41,6 +41,11 @@ describe("Sliding Window - Maximum Sum of n consecutive elements in the array", 
 		[1, [4, 2, 1, 6], 6],
 		[4, [4, 2, 1, 6, 2], 13],
 		[4, [], null],
+		[2, [100, 200, 300, 400], 700],
+		[4, [1,4,2,10,23,3,1,0,20], 39],
+		[2, [-3, 4, 0, -2, 6, -1], 5],
+		[2, [3, -2, 7, -4, 1, -1, 4, -2, 1], 5],
+		[3, [2,3], null],
 	];
 
 	it("Function 'maxSubarraySum' defined", () => {

@@ -81,7 +81,7 @@ class Solution {
 	 * @returns {int} Max sum of consecutive elements in array
 	 */
 	maxSubarraySum(arr, n) {
-		if (arr.length === 0) return null;
+		if (arr.length === 0 || arr.length < n) return null;
 
 		let maxSum = 0;
 		let tempSum = 0;
