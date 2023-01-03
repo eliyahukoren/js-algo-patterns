@@ -1,0 +1,21 @@
+name: Javascript Algo Patterns Action
+run-name: ${{ github.actor }} 🚀
+on: [push]
+jobs:
+  Init:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: 🎉 Install modules
+        run: yarn add jest
+      - name: 🖥️ Running unit test on client
+        run: yarn test
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+

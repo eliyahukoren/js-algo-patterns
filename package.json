@@ -1,0 +1,18 @@
+{
+	"name": "JS_Algo_Patterns",
+	"description": "Javascript algorithm patterns",
+	"version": "1.0.0",
+	"main": "index.js",
+	"author": "Eliyahu Koren <elik.koren@gmail.com>",
+	"license": "MIT",
+	"categories": [
+		"LeetCode",
+		"Javascript",
+		"algorithm",
+		"jest"
+	],
+	"type": "commonjs",
+	"scripts": {
+		"test": "jest"
+	}
+}
