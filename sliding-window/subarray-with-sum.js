@@ -66,7 +66,7 @@ class Solution {
 				return [start + 1, end + 1];
 			}
 		}
-		console.log({ res: [start, end], sum });
+
 		return -1;
 	}
 
