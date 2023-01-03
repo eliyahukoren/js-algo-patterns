@@ -9,6 +9,11 @@ jobs:
         node-version: [16.x]
     steps:
       - uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Starting Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
