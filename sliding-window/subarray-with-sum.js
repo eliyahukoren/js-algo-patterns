@@ -74,7 +74,7 @@ class Solution {
 	// space O(1)
 	/**
 	 * Calculate the maximum sum of n consecutive elements in the array
-	 * 
+	 *
 	 * @param {int[]} arr Array of integers
 	 * @param {int} n count of consecutive elements
 	 *
@@ -103,6 +103,18 @@ class Solution {
 		}
 
 		return maxSum;
+	}
+
+	/**
+	 * Return the minimal length of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
+	 * 
+	 * @param {int[]} arr
+	 * @param {int} n
+	 *
+	 * @returns {int}
+	 */
+	minSubArrayLen(arr, n) {
+		return 0;
 	}
 }
 
