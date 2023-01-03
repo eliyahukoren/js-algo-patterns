@@ -1,6 +1,9 @@
 name: Javascript Algo Patterns Action
 run-name: ${{ github.actor }} 🚀
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
 jobs:
   Init:
     runs-on: ubuntu-latest
@@ -13,7 +16,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          key: node-modules-${{ hashFiles('**/yarn-lock.json') }}
       - name: Starting Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
