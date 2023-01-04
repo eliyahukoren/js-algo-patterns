@@ -41,6 +41,11 @@ describe("Sliding Window - Maximum Sum of n consecutive elements in the array", 
 		[1, [4, 2, 1, 6], 6],
 		[4, [4, 2, 1, 6, 2], 13],
 		[4, [], null],
+		[2, [100, 200, 300, 400], 700],
+		[4, [1,4,2,10,23,3,1,0,20], 39],
+		[2, [-3, 4, 0, -2, 6, -1], 5],
+		[2, [3, -2, 7, -4, 1, -1, 4, -2, 1], 5],
+		[3, [2,3], null],
 	];
 
 	it("Function 'maxSubarraySum' defined", () => {
@@ -51,6 +56,27 @@ describe("Sliding Window - Maximum Sum of n consecutive elements in the array", 
 		"Calc max sum of %i consecutive",
 		(n, arr, expected) => {
 			expect(sw.maxSubarraySum(arr, n)).toEqual(expected);
+		}
+	);
+});
+
+describe("Sliding Window - minimal length of a contiguous subarray", () => {
+	const testData = [
+		[[2, 3, 1, 2, 4, 3], 7, 2], // because [4,3] is the smallest subarray
+		[[2, 1, 6, 5, 4], 9, 2], // because [5,4] is the smallest subarray
+		[[3, 1, 7, 11, 2, 9, 8, 21, 62, 33, 19], 52, 1], // because [62] is greater than 52
+		[[1, 4, 16, 22, 5, 7, 8, 9, 10], 39, 3],
+		[[1, 4, 16, 22, 5, 7, 8, 9, 10], 55, 5],
+		[[4, 3, 3, 8, 1, 2, 3], 11, 2],
+		[[1, 4, 16, 22, 5, 7, 8, 9, 10], 95, 0],
+		[[2, 3, 1, 14, 4, 24, 4, 3], 24, 1],
+		[[2, 3, 1, 14, 4, 17, 4, 3], 48, 8],
+	];
+
+	test.each(testData)(
+		"Test minSubArrayLen with %j, n = %i should be equal %i",
+		(arr, n, expected) => {
+			expect(sw.minSubArrayLen(arr, n)).toEqual(expected);
 		}
 	);
 });

@@ -74,14 +74,14 @@ class Solution {
 	// space O(1)
 	/**
 	 * Calculate the maximum sum of n consecutive elements in the array
-	 * 
+	 *
 	 * @param {int[]} arr Array of integers
 	 * @param {int} n count of consecutive elements
 	 *
 	 * @returns {int} Max sum of consecutive elements in array
 	 */
 	maxSubarraySum(arr, n) {
-		if (arr.length === 0) return null;
+		if (arr.length === 0 || arr.length < n) return null;
 
 		let maxSum = 0;
 		let tempSum = 0;
@@ -104,8 +104,43 @@ class Solution {
 
 		return maxSum;
 	}
+
+	/**
+	 * Return the minimal length of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
+	 *
+	 * @param {int[]} arr
+	 * @param {int} n
+	 *
+	 * @returns {int}
+	 */
+	minSubArrayLen(arr, n) {		
+		// if we found greater than or equal value on the first position,
+		// nothing to search, because 1 is the smallest subarray.
+		if (arr[0] >= n) return 1;
+
+		let i = 0;
+		let j = 0;
+		let currSum = 0;
+		let minLen = Infinity;
+
+		while( i < arr.length){
+			if( currSum < n && j < arr.length){
+				currSum += arr[j];
+				j++;
+			}else if( currSum >= n){
+				minLen = Math.min(minLen, j - i);
+				currSum -= arr[i];
+				i++;
+			}else{
+				break;
+			}
+		}
+
+
+		return minLen === Infinity ? 0 : minLen;
+	}
 }
 
 module.exports = {
-	Solution
-}
+	Solution,
+};
