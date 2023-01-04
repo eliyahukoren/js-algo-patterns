@@ -107,17 +107,40 @@ class Solution {
 
 	/**
 	 * Return the minimal length of a contiguous subarray of which the sum is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
-	 * 
+	 *
 	 * @param {int[]} arr
 	 * @param {int} n
 	 *
 	 * @returns {int}
 	 */
-	minSubArrayLen(arr, n) {
-		return 0;
+	minSubArrayLen(arr, n) {		
+		// if we found greater than or equal value on the first position,
+		// nothing to search, because 1 is the smallest subarray.
+		if (arr[0] >= n) return 1;
+
+		let i = 0;
+		let j = 0;
+		let currSum = 0;
+		let minLen = Infinity;
+
+		while( i < arr.length){
+			if( currSum < n && j < arr.length){
+				currSum += arr[j];
+				j++;
+			}else if( currSum >= n){
+				minLen = Math.min(minLen, j - i);
+				currSum -= arr[i];
+				i++;
+			}else{
+				break;
+			}
+		}
+
+
+		return minLen === Infinity ? 0 : minLen;
 	}
 }
 
 module.exports = {
-	Solution
-}
+	Solution,
+};
