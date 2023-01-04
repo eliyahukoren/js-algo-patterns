@@ -139,6 +139,16 @@ class Solution {
 
 		return minLen === Infinity ? 0 : minLen;
 	}
+
+	/**
+	 * Function accepts string and returns the longest substring with all distinct characters.
+	 * 
+	 * @param {string} str 
+	 * @returns Returns the length of the longest substring.
+	 */
+	findLongestSubstring(str){
+		return 0;
+	}
 }
 
 module.exports = {
