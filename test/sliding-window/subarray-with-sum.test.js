@@ -80,3 +80,23 @@ describe("Sliding Window - minimal length of a contiguous subarray", () => {
 		}
 	);
 });
+
+describe("Sliding Window - Find Longest Substring", () => {
+	const testData = [
+		["", 0],
+		["rithmschool", 7], // rithmsc
+		["thisisawesome", 6], // awesom
+		["thecatinthehat", 7], // intheha
+		["bbbbbb", 1], // b
+		["longestsubstring", 8], // ubstring
+		["thisishowwedoit", 6], // wedoit
+		["abcdefg", 7],
+		["aaaaaaaaaaaaaaaaaaabcdefg", 7],
+		["cccccccccccabcdefgccccccccccc", 7],
+	];
+
+	test.each(testData)("Unit test findLongestSubstring with '%s' expect return %i", (str, expected) => {
+		expect(sw.findLongestSubstring(str)).toEqual(expected);
+		expect(sw.findLongestSubstringV1(str)).toEqual(expected);
+	});
+})

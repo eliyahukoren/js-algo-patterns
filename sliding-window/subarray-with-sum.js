@@ -113,7 +113,7 @@ class Solution {
 	 *
 	 * @returns {int}
 	 */
-	minSubArrayLen(arr, n) {		
+	minSubArrayLen(arr, n) {
 		// if we found greater than or equal value on the first position,
 		// nothing to search, because 1 is the smallest subarray.
 		if (arr[0] >= n) return 1;
@@ -123,21 +123,69 @@ class Solution {
 		let currSum = 0;
 		let minLen = Infinity;
 
-		while( i < arr.length){
-			if( currSum < n && j < arr.length){
+		while (i < arr.length) {
+			if (currSum < n && j < arr.length) {
 				currSum += arr[j];
 				j++;
-			}else if( currSum >= n){
+			} else if (currSum >= n) {
 				minLen = Math.min(minLen, j - i);
 				currSum -= arr[i];
 				i++;
-			}else{
+			} else {
 				break;
 			}
 		}
 
-
 		return minLen === Infinity ? 0 : minLen;
+	}
+
+	/**
+	 * Function accepts string and returns the longest substring with all distinct characters.
+	 *
+	 * @param {string} str
+	 * @returns Returns the length of the longest substring.
+	 */
+	findLongestSubstring(str) {
+		let start = 0;
+		let end = 0;
+		let maxLength = 0;
+		let uniqueShars = {};
+
+		while (start < str.length) {
+			if (uniqueShars[str[end]] === undefined && end < str.length) {
+				maxLength = Math.max(maxLength, end - start + 1);
+				uniqueShars[str[end]] = end;
+				end++;
+			} else if (uniqueShars[str[end]] !== undefined) {
+				start = uniqueShars[str[end]] + 1;
+				end = start;
+				uniqueShars = {};
+			} else {
+				break;
+			}
+		}
+
+		return maxLength;
+	}
+
+	findLongestSubstringV1(str){
+		let longest = 0;
+		let start = 0;
+		let seen = {};
+
+		for(let i = 0; i < str.length; i++){
+			let char = str[i];
+
+			if( seen[char] ){
+				start = Math.max(seen[char],start);
+			}
+
+			longest = Math.max(longest, i - start + 1);
+
+			seen[char] = i + 1; 
+		}
+
+		return longest;
 	}
 }
 
