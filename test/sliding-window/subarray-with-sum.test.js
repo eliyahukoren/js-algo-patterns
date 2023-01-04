@@ -90,9 +90,13 @@ describe("Sliding Window - Find Longest Substring", () => {
 		["bbbbbb", 1], // b
 		["longestsubstring", 8], // ubstring
 		["thisishowwedoit", 6], // wedoit
+		["abcdefg", 7],
+		["aaaaaaaaaaaaaaaaaaabcdefg", 7],
+		["cccccccccccabcdefgccccccccccc", 7],
 	];
 
 	test.each(testData)("Unit test findLongestSubstring with '%s' expect return %i", (str, expected) => {
 		expect(sw.findLongestSubstring(str)).toEqual(expected);
+		expect(sw.findLongestSubstringV1(str)).toEqual(expected);
 	});
 })
