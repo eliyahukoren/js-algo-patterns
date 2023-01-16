@@ -63,6 +63,20 @@ const fibA = (pos) => {
 	}
 }
 
+/*
+	Write a recursive function called reverse which accepts a string 
+		and returns a new string in reverse.
+*/
+const reverse = (word) => {
+	if( word === "") return "";
+
+	const len = word.length - 1;
+	const char = word[len];
+	const newWord = word.slice(0, len);
+
+	return char + reverse(newWord);
+}
+
 module.exports = {
 	power,
 	factorial,
@@ -70,4 +84,7 @@ module.exports = {
 	recursiveRange,
 	fib,
 	fibA,
+	reverse,
 };
+
+

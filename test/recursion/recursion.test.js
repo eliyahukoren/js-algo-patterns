@@ -3,10 +3,10 @@ const {
 	factorial,
 	productOfArray,
 	recursiveRange,
-	fib, 
-	fibA
+	fib,
+	fibA,
+	reverse,
 } = require("../../recursion/recursion");
-
 
 describe("Power - Recursion", () => {
 	describe("Test if function is exists", () => {
@@ -41,14 +41,14 @@ describe("Factorial - Recursion", () => {
 
 	describe("Check factorial", () => {
 		test.each`
-			num | expected
+			num  | expected
 			${0} | ${1}
 			${1} | ${1}
 			${2} | ${2}
 			${3} | ${6}
 			${4} | ${24}
 			${7} | ${5040}
-			${9}| ${362_880}
+			${9} | ${362_880}
 		`(
 			"factorial with $num expect to return $expected",
 			({ num, expected }) => {
@@ -80,7 +80,6 @@ describe("Product Of Array - Recursion", () => {
 		);
 	});
 });
-
 
 describe("Recursive Range - Recursion", () => {
 	describe("Test if function is exists", () => {
@@ -144,5 +143,23 @@ describe("Fibonacci - NOT Recursion", () => {
 		`("fib with $num expect to return $expected", ({ num, expected }) => {
 			expect(fibA(num)).toEqual(expected);
 		});
+	});
+});
+
+describe("Recursion - Reverse Word", () => {
+	test("Is reverse word function defined", () => {
+		expect(reverse).toBeDefined();
+	});
+
+	const tests = [
+		[""],
+		["act"],
+		["awesome"],
+		["rithmschool"],
+		["Vine snake"]
+	];
+
+	test.each(tests)("Expect '%s' to be reversed", (word) => {
+		expect(reverse(word)).toEqual(word.split('').reverse().join(''));
 	});
 });
