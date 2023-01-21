@@ -133,6 +133,21 @@ const sumTo = (num) => {
 	return	num === 1 ? 1 : num + sumTo(num - 1)
 }
 
+const toUpperCaseWord = str => {
+	return str.charAt(0).toUpperCase().concat(str.slice(1));
+}
+/*
+	capitalizeFirst
+	Write a recursive function called capitalizeFirst. 
+	Given an array of strings, capitalize the first letter of each string in the array.
+*/
+const capitalizeFirst = (array) => {
+	const result = [toUpperCaseWord(array[0])];
+	if( array.length === 1) return result;
+
+	return result.concat(capitalizeFirst(array.slice(1)));
+}
+
 module.exports = {
 	power,
 	factorial,
@@ -144,7 +159,8 @@ module.exports = {
 	flatten,
 	someRecursive,
 	isPalindrome,
-	sumTo
+	sumTo,
+	capitalizeFirst
 };
 
 
