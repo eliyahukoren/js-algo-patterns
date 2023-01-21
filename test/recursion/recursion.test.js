@@ -7,7 +7,8 @@ const {
 	fibA,
 	reverse,
 	flatten,
-	someRecursive
+	someRecursive,
+	isPalindrome
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -208,4 +209,25 @@ describe("Recursion - Some Recursive", () => {
 	})
 });
 
+describe("Recursion - Is Palindrome", () => {
+	// isPalindrome('awesome') // false
+	// isPalindrome('foobar') // false
+	// isPalindrome('tacocat') // true
+	// isPalindrome('amanaplanacanalpanama') // true
+	// isPalindrome('amanaplanacanalpandemonium') // false
+	const tests = [
+		["awesome", false],
+		["foobar", false],
+		["tacocat", true],
+		["amanaplanacanalpanama", true],
+		["amanaplanacanalpandemonium", false],
+	];
+	test("Is isPalindrome function defined", () => {
+		expect(isPalindrome).toBeDefined();
+	});
+
+	it.each(tests)("'%s', expect to be %s", (word, expected) => {
+		expect(isPalindrome(word)).toEqual(expected);
+	});
+});
 
