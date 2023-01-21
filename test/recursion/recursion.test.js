@@ -10,7 +10,8 @@ const {
 	someRecursive,
 	isPalindrome,
 	sumTo,
-	capitalizeFirst
+	capitalizeFirst,
+	nestedEvenSum
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -263,6 +264,97 @@ describe("Recursion - Capitalize First Letter", () => {
 
 	it.each(tests)("Sum to %s, expect to be %s", (array, expected) => {
 		expect(capitalizeFirst(array)).toEqual(expected);
+	});
+});
+
+describe("Recursion - Nested Even Sum", () => {
+	const obj1 = {
+		outer: 2,
+		some: 1,
+		obj: {
+			inner: 2,
+			sobj: {
+				superObj: 2,
+				notNumber: true,
+				alsoNotANumber: "hello"
+			}
+		}
+	};
+	const obj2 = {
+		a: 2,
+		b: {
+			c: "c",
+			d: true,
+			e: {
+				a: 1,
+				b: false,
+				dd: "p",
+				ef: {
+					n: 2,
+					m: 3,
+					o: {
+						h: {
+							k: 2,
+							ld: {
+								f: 2,
+								d: 2
+							}
+						}
+					}
+				}
+			}
+		},
+		c: "string",
+		d: false
+	};
+	const obj3 = {
+		a: 2,
+		b: {
+			c: "c",
+			d: true,
+			e: {
+				a: 1,
+				b: false,
+				dd: "p",
+				ef: {
+					n: 2,
+					m: 3,
+					o: {
+						h: {
+							k: 2,
+						},
+					},
+				},
+			},
+		},
+		c: "string",
+		d: false,
+		o: 2,
+		y: {
+			e: {
+				h: {
+					a: true,
+					b: 2,
+					c: 1,
+					e: 2
+				}
+			}
+		}
+	};
+
+
+	const tests = [
+		[obj1, 6],
+		[obj2, 10],
+		[obj3, 12],
+	];
+
+	test("Is nestedEvenSum function defined", () => {
+		expect(nestedEvenSum).toBeDefined();
+	});
+
+	it.each(tests)("Sum to %j, expect to be %s", (obj, expected) => {
+		expect(nestedEvenSum(obj)).toEqual(expected);
 	});
 });
 
