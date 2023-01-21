@@ -9,7 +9,8 @@ const {
 	flatten,
 	someRecursive,
 	isPalindrome,
-	sumTo
+	sumTo,
+	capitalizeFirst
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -250,4 +251,18 @@ describe("Recursion - Sum To", () => {
 	});
 });
 
+describe("Recursion - Capitalize First Letter", () => {
+	const tests = [
+		[["car", "taco", "banana"],
+		["Car", "Taco", "Banana"]],
+		[["cat"],["Cat"]]
+	];
+	test("Is capitalizeFirst function defined", () => {
+		expect(capitalizeFirst).toBeDefined();
+	});
+
+	it.each(tests)("Sum to %s, expect to be %s", (array, expected) => {
+		expect(capitalizeFirst(array)).toEqual(expected);
+	});
+});
 
