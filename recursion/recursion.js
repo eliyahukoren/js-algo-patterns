@@ -129,6 +129,10 @@ const isPalindrome = (word) => {
 	return false;
 }
 
+const sumTo = (num) => {
+	return	num === 1 ? 1 : num + sumTo(num - 1)
+}
+
 module.exports = {
 	power,
 	factorial,
@@ -139,7 +143,8 @@ module.exports = {
 	reverse,
 	flatten,
 	someRecursive,
-	isPalindrome
+	isPalindrome,
+	sumTo
 };
 
 
