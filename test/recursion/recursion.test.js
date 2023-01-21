@@ -7,6 +7,7 @@ const {
 	fibA,
 	reverse,
 	flatten,
+	someRecursive
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -188,3 +189,23 @@ describe("Testing flatten", () => {
 		expect(flatten(act)).toEqual(exp);
 	});
 });
+
+describe("Recursion - Some Recursive", () => {
+	const f = val => val % 2 !== 0
+
+	const tests = [
+		[[1, 2, 3, 4], f, true],
+		[[4, 6, 8, 9], f, true],
+		[[4, 6, 8], f, false],
+		[[4, 6, 8, 9], val => val > 10, false],
+	];
+	test("Is someRecursive function defined", () => {
+		expect(someRecursive).toBeDefined();
+	});
+
+	it.each(tests)("someRecursive testing %j", (array, callback, expected) => {
+		expect(someRecursive(array, callback)).toEqual(expected);
+	})
+});
+
+
