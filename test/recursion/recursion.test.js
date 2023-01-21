@@ -8,7 +8,8 @@ const {
 	reverse,
 	flatten,
 	someRecursive,
-	isPalindrome
+	isPalindrome,
+	sumTo
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -230,4 +231,23 @@ describe("Recursion - Is Palindrome", () => {
 		expect(isPalindrome(word)).toEqual(expected);
 	});
 });
+
+describe("Recursion - Sum To", () => {
+
+	const tests = [
+		[1, 1],
+		[2, 3],
+		[3, 6],
+		[4, 10],
+		[100, 5050],
+	];
+	test("Is sumTo function defined", () => {
+		expect(sumTo).toBeDefined();
+	});
+
+	it.each(tests)("Sum to %s, expect to be %s", (num, expected) => {
+		expect(sumTo(num)).toEqual(expected);
+	});
+});
+
 
