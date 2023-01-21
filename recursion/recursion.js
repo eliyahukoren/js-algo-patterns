@@ -109,6 +109,26 @@ const someRecursive = (array, callback) => {
 	return someRecursive(array.slice(1), callback);
 }
 
+/*
+isPalindrome
+Write a recursive function called isPalindrome which returns true if the string passed to it is a palindrome (reads the same forward and backward). Otherwise it returns false.
+*/
+
+// isPalindrome('awesome') // false
+// isPalindrome('foobar') // false
+// isPalindrome('tacocat') // true
+// isPalindrome('amanaplanacanalpanama') // true
+// isPalindrome('amanaplanacanalpandemonium') // false
+
+const isPalindrome = (word) => {
+	if( word.length === 1 ) return true
+	if( word.length === 2 ) return word[0] === word[1]
+
+	if( word[0] === word.slice(-1)) return isPalindrome(word.slice(1,-1));
+
+	return false;
+}
+
 module.exports = {
 	power,
 	factorial,
@@ -118,7 +138,8 @@ module.exports = {
 	fibA,
 	reverse,
 	flatten,
-	someRecursive
+	someRecursive,
+	isPalindrome
 };
 
 
