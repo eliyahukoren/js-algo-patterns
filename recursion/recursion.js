@@ -68,13 +68,23 @@ const fibA = (pos) => {
 		and returns a new string in reverse.
 */
 const reverse = (word) => {
-	if( word === "") return "";
+	if( word.length <= 1) return word
 
-	const len = word.length - 1;
-	const char = word[len];
-	const newWord = word.slice(0, len);
+	return reverse(word.slice(1)) + word[0];
+}
 
-	return char + reverse(newWord);
+const flatten = (nums) => {
+	let res = [];
+
+	for(let item of nums){
+		if( Array.isArray(item) ){
+			res = res.concat(flatten(item))
+		}else{
+			res.push(item);
+		}
+	}
+
+	return res;
 }
 
 module.exports = {
@@ -85,6 +95,7 @@ module.exports = {
 	fib,
 	fibA,
 	reverse,
+	flatten,
 };
 
 

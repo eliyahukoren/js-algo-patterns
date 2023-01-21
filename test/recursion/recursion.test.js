@@ -6,6 +6,7 @@ const {
 	fib,
 	fibA,
 	reverse,
+	flatten,
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -151,15 +152,39 @@ describe("Recursion - Reverse Word", () => {
 		expect(reverse).toBeDefined();
 	});
 
-	const tests = [
-		[""],
-		["act"],
-		["awesome"],
-		["rithmschool"],
-		["Vine snake"]
-	];
+	const tests = [[""], ["act"], ["awesome"], ["rithmschool"], ["Vine snake"]];
 
 	test.each(tests)("Expect '%s' to be reversed", (word) => {
-		expect(reverse(word)).toEqual(word.split('').reverse().join(''));
+		expect(reverse(word)).toEqual(word.split("").reverse().join(""));
+	});
+});
+
+describe("Testing flatten", () => {
+	it("flatten function defined", () => {
+		expect(flatten).toBeDefined();
+	});
+
+	const tests = [
+		[
+			[1, 2, 3],
+			[1, 2, 3],
+		],
+		[
+			[1, 2, 3, []],
+			[1, 2, 3],
+		],
+		[
+			[1, 2, 3, [[4]]],
+			[1, 2, 3, 4],
+		],
+		[
+			[1, [2, [3, [4, [5, [6]]]]]],
+			[1, 2, 3, 4, 5, 6],
+		],
+		[[[[[1], [[[2]]], [[[[[[[3]]]]]]]]]], [1, 2, 3]],
+	];
+
+	it.each(tests)("expect %j to be %j", (act, exp) => {
+		expect(flatten(act)).toEqual(exp);
 	});
 });
