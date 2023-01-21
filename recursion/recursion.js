@@ -148,6 +148,28 @@ const capitalizeFirst = (array) => {
 	return result.concat(capitalizeFirst(array.slice(1)));
 }
 
+/*
+	Write a recursive function called nestedEvenSum. 
+	Return the sum of all even numbers in an object which may contain nested objects.
+*/
+const nestedEvenSum = (obj) => {
+	let sum = 0;
+
+	for( let key in obj ){
+		switch(typeof obj[key]){
+			case 'object':
+				sum += nestedEvenSum(obj[key]);
+				break;
+			case 'number':	
+				sum += obj[key] % 2 === 0 ? obj[key] : 0;
+				break;
+		}		
+	}
+
+	return sum;
+}
+
+
 module.exports = {
 	power,
 	factorial,
@@ -160,7 +182,8 @@ module.exports = {
 	someRecursive,
 	isPalindrome,
 	sumTo,
-	capitalizeFirst
+	capitalizeFirst,
+	nestedEvenSum
 };
 
 
