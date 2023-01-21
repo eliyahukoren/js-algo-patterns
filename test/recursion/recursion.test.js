@@ -14,6 +14,7 @@ const {
 	nestedEvenSum,
 	capitalizeWords,
 	stringifyNumbers,
+	collectStrings,
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -459,5 +460,36 @@ describe("Recursion - Stringify Numbers", () => {
 	it.each(tests)("expect %j to be %j", (obj, expected) => {
 		expect(stringifyNumbers(obj)).toEqual(expected);
 	});
+});
+
+describe("Recursion - Collect Strings", () => {
+	test("Is collectStrings function defined", () => {
+		expect(collectStrings).toBeDefined();
+	});
+
+	const obj = {
+		stuff: "foo",
+		data: {
+			val: {
+				thing: {
+					info: "bar",
+					moreInfo: {
+						evenMoreInfo: {
+							weMadeIt: "baz"
+						}
+					}
+				}
+			}
+		}
+	};
+	const res = ["foo", "bar", "baz"];
+
+	const tests = [
+		[obj, res]
+	];
+
+	test.each(tests)("expect %j to be equal %j", (obj, expected) => {
+		expect(collectStrings(obj)).toEqual(expected)
+	})
 });
 

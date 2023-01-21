@@ -179,7 +179,8 @@ const capitalizeWords = (array) => {
 	return upperCaseString.concat(capitalizeWords(nextArray));
 }
 
-const isNumber = val => typeof val === 'number'
+const isNumber = (val) => typeof val === "number";
+const isString = (val) => typeof val === "string";
 const isNotArrayButObject = (val) =>
 	!Array.isArray(val) && typeof val === "object";
 
@@ -205,6 +206,20 @@ const stringifyNumbers = (obj) => {
 
 }
 
+const collectStrings = obj => {
+	let result = [];
+	
+	for(let key in obj){
+		if ( isString(obj[key]) ){
+			result.push(obj[key]);
+		}else if( isNotArrayButObject(obj[key]) ){
+			result = result.concat(collectStrings(obj[key]))
+		}
+	}
+
+	return result;
+}
+
 
 module.exports = {
 	power,
@@ -222,6 +237,7 @@ module.exports = {
 	nestedEvenSum,
 	capitalizeWords,
 	stringifyNumbers,
+	collectStrings,
 };
 
 
