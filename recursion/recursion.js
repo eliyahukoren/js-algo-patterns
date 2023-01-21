@@ -169,6 +169,16 @@ const nestedEvenSum = (obj) => {
 	return sum;
 }
 
+const capitalizeWords = (array) => {
+	if( array.length === 0) return array;
+	if (array.length === 1) return [array[0].toUpperCase()];
+
+	let upperCaseString = [array[0].toUpperCase()];
+	const nextArray = array.slice(1);
+	
+	return upperCaseString.concat(capitalizeWords(nextArray));
+}
+
 
 module.exports = {
 	power,
@@ -183,7 +193,8 @@ module.exports = {
 	isPalindrome,
 	sumTo,
 	capitalizeFirst,
-	nestedEvenSum
+	nestedEvenSum,
+	capitalizeWords
 };
 
 

@@ -11,7 +11,8 @@ const {
 	isPalindrome,
 	sumTo,
 	capitalizeFirst,
-	nestedEvenSum
+	nestedEvenSum,
+	capitalizeWords,
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -356,5 +357,25 @@ describe("Recursion - Nested Even Sum", () => {
 	it.each(tests)("Sum to %j, expect to be %s", (obj, expected) => {
 		expect(nestedEvenSum(obj)).toEqual(expected);
 	});
+});
+
+
+describe("Recursion - Capitalize Words", () => {
+	test("Is capitalizeWords function defined", () => {
+		expect(capitalizeWords).toBeDefined();
+	});
+
+	const tests = [
+		[
+			["i", "am", "playing", "with", "recursion"],
+			["I", "AM", "PLAYING", "WITH", "RECURSION"],
+		],
+		[["Single"], ["SINGLE"]],
+		[[], []],
+	];
+
+	it.each(tests)("expect %j to be %j", (array, expected) => {
+		expect(capitalizeWords(array)).toEqual(expected);
+	})
 });
 
