@@ -175,8 +175,34 @@ const capitalizeWords = (array) => {
 
 	let upperCaseString = [array[0].toUpperCase()];
 	const nextArray = array.slice(1);
-	
+
 	return upperCaseString.concat(capitalizeWords(nextArray));
+}
+
+const isNumber = val => typeof val === 'number'
+const isNotArrayButObject = (val) =>
+	!Array.isArray(val) && typeof val === "object";
+
+const stringifyNumbers = (obj) => {
+	const newObj = {}
+
+	for(let key in obj){
+		let result;
+		let val = obj[key];
+
+		if( isNumber(val) ){
+			result = val.toString();
+		}else if (isNotArrayButObject(val)) {
+			result = stringifyNumbers(val);
+		}else{
+			result = val;
+		}
+
+		newObj[key] = result;
+	}
+
+	return newObj;
+
 }
 
 
@@ -194,7 +220,8 @@ module.exports = {
 	sumTo,
 	capitalizeFirst,
 	nestedEvenSum,
-	capitalizeWords
+	capitalizeWords,
+	stringifyNumbers,
 };
 
 

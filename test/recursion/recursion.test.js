@@ -13,6 +13,7 @@ const {
 	capitalizeFirst,
 	nestedEvenSum,
 	capitalizeWords,
+	stringifyNumbers,
 } = require("../../recursion/recursion");
 
 describe("Power - Recursion", () => {
@@ -377,5 +378,86 @@ describe("Recursion - Capitalize Words", () => {
 	it.each(tests)("expect %j to be %j", (array, expected) => {
 		expect(capitalizeWords(array)).toEqual(expected);
 	})
+});
+
+describe("Recursion - Stringify Numbers", () => {
+	test("Is stringifyNumbers function defined", () => {
+		expect(stringifyNumbers).toBeDefined();
+	});
+
+	const fromObj = {
+		a: 1,
+		b: "text",
+		c: false,
+		d: {
+			a: "someA",
+			b: {
+				a: "nestedString",
+				b: true,
+				c: 2,
+				d: 3,
+				e: {
+					a: 1
+				}
+			}
+		}
+	};
+	const toObj = {
+		a: "1",
+		b: "text",
+		c: false,
+		d: {
+			a: "someA",
+			b: {
+				a: "nestedString",
+				b: true,
+				c: "2",
+				d: "3",
+				e: {
+					a: "1"
+				}
+			}
+		}
+	};
+
+	const fromObj1 = {
+		a: 1,
+		b: 2,
+		c: 3,
+		d: 4,
+		e: {
+			a: 11
+		}
+	};
+	const toObj1 = {
+		a: "1",
+		b: "2",
+		c: "3",
+		d: "4",
+		e: {
+			a: "11"
+		}
+	};
+
+	const fromObj2 = {
+		a: 2,
+		b: [],
+		c: "3"
+	};
+	const toObj2 = {
+		a: "2",
+		b: [],
+		c: "3"
+	};
+
+	const tests = [
+		[fromObj, toObj],
+		[fromObj1, toObj1],
+		[fromObj2, toObj2]
+	];
+
+	it.each(tests)("expect %j to be %j", (obj, expected) => {
+		expect(stringifyNumbers(obj)).toEqual(expected);
+	});
 });
 
