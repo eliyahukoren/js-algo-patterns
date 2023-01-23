@@ -7,18 +7,13 @@ const swap = (arr, idxFrom, idxTo) => {
 
 const selectionSort = (arr) => {
 	for(let i = 0; i < arr.length; i++){
-		let lowest = {value: arr[i], index: i};
+		let lowest = i;
 
 		for(let j = i + 1; j < arr.length; j ++){
-			if( arr[j] < lowest.value){
-				lowest.value = arr[j];
-				lowest.index = j;
-			}
+			if( arr[j] < arr[lowest]) lowest = j
 		}
 
-		if( lowest.value !== arr[i]){
-			swap(arr, lowest.index, i);
-		}
+		if( lowest !== i ) swap(arr, lowest, i)
 	}
 
 	return arr;
