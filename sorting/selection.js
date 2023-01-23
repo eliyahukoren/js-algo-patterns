@@ -1,8 +1,6 @@
 const swap = (arr, idxFrom, idxTo) => {
-	let temp = arr[idxTo];
-	arr[idxTo] = arr[idxFrom];
-	arr[idxFrom] = temp;
-	return arr;
+	// use ES6 syntax to swap array
+	[arr[idxFrom], arr[idxTo]] = [arr[idxTo], arr[idxFrom]]
 }
 
 const selectionSort = (arr) => {
